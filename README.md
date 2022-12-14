@@ -14,3 +14,6 @@ Solution:
 
 Our solution is a robotic arm that can span the range of the bounded region in which all the blocks lie. The arm has a camera on its end point that uses visual cues to determine the positions of the blocks relative to the base of the arm.(Codes for this detection are all included). The arm then moves the endpoint, that carries the payload that carries out the actual tagging of the blocks, in the order specified.
 
+- ![Robotic Arm Random Angle](./assets/a2r1.png?raw=true "a2r1")
+- ![Robotic Arm's Palm](./assets/a2r1.png?raw=true "a2r2")
+- ![Robotic Arm Side-view](./assets/a2r1.png?raw=true "a2r3")
