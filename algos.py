@@ -5,6 +5,7 @@ import time
 def move_motor(angle,servo,pin):
     duty=angle/18 +2
     GPIO.output(pin,True)
+    servo.start(0)
     servo.ChangeDutyCycle(duty)
     time.sleep(1)
     GPIO.output(pin,False)
