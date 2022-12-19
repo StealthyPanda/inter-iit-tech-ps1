@@ -1,5 +1,19 @@
 from typing import Tuple
 from math import atan
+import RPi.GPIO as GPIO 
+import time
+def move_motor(angle,servo,pin):
+    duty=angle/18 +2
+    GPIO.output(pin,True)
+    servo.start(0)
+    servo.ChangeDutyCycle(duty)
+    time.sleep(1)
+    GPIO.output(pin,False)
+    servo.ChangeDutyCycle(0)
+
+
+
+
 
 def getangles(sectionlengths : Tuple[float, float], basepoint : Tuple[float, float], targetpoint : Tuple[float, float])->Tuple[float, float]:
     """
@@ -55,5 +69,10 @@ if __name__ == '__main__':
     base = (1, 2)
     arms = (1, 2.2)
     target = (3.6, 1.51)
-
-    print(getangles(arms, base, target))
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(11,GPIO.OUT)
+    GPIO.setup(10,GPIO.OUT)
+    servo_1=GPIO.PWM(11,50)
+    servo_2=GPIO.PWM(10,50)
+    move_motor(getangles(arms, base, target)[0],servo_1,11)
+    move_motor(getangles(arms, base, target)[1],servo_2,10)
